@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import quran from "./quran.json";
-import { getCloseMatches } from "difflib";
 
 const useQuranSearch = (query) => {
     const [searchResults, setSearchResults] = useState([]);
