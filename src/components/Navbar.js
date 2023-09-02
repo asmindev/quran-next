@@ -19,13 +19,10 @@ export default function Navbar() {
                         </button>
                     </div>
                 </div>
-                <div className="h-[10%]">
+                <div className="h-[10%] bg-orange-500">
                     <div className="w-full h-full flex items-center justify-center">
-                        <button
-                            type="button"
-                            className="py-3 px-6 rounded-xl border"
-                        >
-                            Footer
+                        <button type="button" className="py-3 px-6 text-white">
+                            Jadi Sponsor
                         </button>
                     </div>
                 </div>

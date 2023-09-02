@@ -9,7 +9,7 @@ const ArabText = ({ word }) => {
 
     return (
         <div
-            className={`font-medium my-2 text-xl md:text-2xl lg:text-4xl hover:text-orange-500 transition-all duration-300 ${
+            className={`font-medium my-2 text-xl md:text-2xl lg:text-4xl hover:text-orange-500 transition-all duration-150 ${
                 ayah === word.verse_key && segment === word.segment
                     ? "text-orange-500"
                     : "text-gray-600"

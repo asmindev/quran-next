@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const arabic = localFont({
-    src: "../assets/fonts/noorehidayat.ttf",
+    src: "../assets/fonts/me_quran_volt_newmet.ttf",
     subsets: ["arabic"],
     variable: "--font-arabic",
 });

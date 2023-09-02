@@ -28,7 +28,7 @@ export default function Surah({ params }) {
                     </div>
                 </div>
             </div>
-            <div className="w-full p-0 md:px-2 lg:px-4 sticky bottom-12 md:bottom-0">
+            <div className="w-full sticky bottom-12 md:bottom-0">
                 <AudioController />
             </div>
         </Wrapper>

@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AudioContext } from "@/components/AudioContext";
 import { motion, AnimatePresence } from "framer-motion";
+import config from "@/services/quran.config";
 
 // Komponen Tombol Audio
 const AudioButton = ({ icon, onClick }) => (
@@ -69,7 +70,9 @@ export default function AudioController() {
         // https://api.quran.com/api/v4/resources/recitations
         const res = await fetch(`${baseUrl}/resources/recitations`);
         const data = await res.json();
-        const result = data.recitations?.find((item) => item.id === 5);
+        const result = data.recitations?.find(
+            (item) => item.id === config.audio
+        );
         setReciter(result);
     };
 

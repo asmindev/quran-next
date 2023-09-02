@@ -1,9 +1,12 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import { usePathname, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { AudioContext } from "@/components/AudioContext";
 
 export default function Action({ item }) {
+    const params = useParams();
+    const path = usePathname();
     const { listAudio, setFirst } = useContext(AudioContext);
     const [bookmark, setBookmark] = useState(false);
 
@@ -11,6 +14,28 @@ export default function Action({ item }) {
         const index = listAudio.findIndex((item) => item.verse_key === key);
         setFirst(index + 1);
     };
+    const copyToClipboard = async (id) => {
+        try {
+            const url = new URL(window.location.href);
+            await navigator.clipboard.writeText(
+                `${url.origin}/${url.pathname}#${id}`
+            );
+        } catch (error) {
+            console.error("Failed to copy:", error);
+        }
+    };
+    useEffect(() => {
+        if (window) {
+            const url = window.location.hash;
+            const parent = document.getElementById(item.verse_key);
+            if (url === `#${parent.id}`) {
+                parent.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+            }
+        }
+    }, [item.verse_key]);
     return (
         <div className="w-full mt-4 flex gap-4 items-center">
             <motion.button
@@ -33,7 +58,11 @@ export default function Action({ item }) {
                     />
                 </svg>
             </motion.button>
-            <motion.button whileTap={{ scale: 0.9 }} type="button">
+            <motion.button
+                onClick={() => copyToClipboard(item.verse_key)}
+                whileTap={{ scale: 0.9 }}
+                type="button"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

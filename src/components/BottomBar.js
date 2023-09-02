@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function BottomBar() {
     return (
-        <div className="w-full bg-white border-t px-4 py-3">
+        <div className="w-full bg-white border-t px-4 py-4">
             <div className="w-full flex justify-evenly">
                 <motion.button
                     whileTap={{ scale: 0.9 }}

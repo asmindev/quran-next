@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Verse from "./Verse";
 import { AudioContext } from "@/components/AudioContext";
+import config from "@/services/quran.config";
 
 // Di luar komponen
 const apiBaseUrl = process.env.NEXT_PUBLIC_QURAN_API;
@@ -26,18 +27,13 @@ export default function Content({ surah }) {
     const [pagination, setPagination] = useState([]);
 
     const fetchVerses = async (page = 1) => {
-        const params = {
-            words: true,
-            translations: "en-sahih-international",
-            audio: 5,
-            word_fields: "text_uthmani",
-            page,
-            language: "id",
-        };
+        config.words = true;
+        config.translations = "en-sahih-international";
+        config.page = page;
 
         const res = await fetch(
             `${apiBaseUrl}/verses/by_chapter/${surah}?${new URLSearchParams(
-                params
+                config
             ).toString()}`
         );
 

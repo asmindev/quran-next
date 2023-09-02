@@ -15,12 +15,12 @@ export default function Header() {
     const { data, isLoading, isError } = useFetch(`/chapters/${surah}`);
     const nextPage = () => {
         const currentPage = parseInt(surah, 10);
-        return currentPage < 114 ? currentPage + 1 : 114;
+        return currentPage < 114 ? `/surah/${currentPage + 1}` : "/";
     };
 
     const prevPage = () => {
         const currentPage = parseInt(surah, 10);
-        return currentPage > 1 ? currentPage - 1 : 1;
+        return currentPage > 1 ? `/surah/${currentPage - 1}` : "/";
     };
     useEffect(() => {
         setSurah({
@@ -30,9 +30,9 @@ export default function Header() {
         });
     }, [data, setSurah]);
     return (
-        <>
-            <div className="w-full bg-white p-4 flex justify-center items-center">
-                <Link href={`/surah/${prevPage()}`}>
+        <div className="bg-white">
+            <div className="w-full p-4 flex justify-center items-center">
+                <Link href={prevPage()}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -61,7 +61,7 @@ export default function Header() {
                         </div>
                     )}
                 </div>
-                <Link href={`/surah/${nextPage()}`}>
+                <Link href={nextPage()}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -78,8 +78,8 @@ export default function Header() {
                     </svg>
                 </Link>
             </div>
-            <div className="p-2 bg-white flex items-center w-full overflow-hidden">
-                <div className="flex flex-col md:flex-row w-full h-full justify-between md:items-center">
+            <div className="p-2 w-full md:w-10/12 mx-auto flex items-center overflow-hidden">
+                <div className="flex flex-col md:flex-row w-full h-full justify-between md:items-end">
                     <div className="flex-1 flex justify-between h-full px-2">
                         <div className="flex-1 flex flex-col justify-center">
                             <h1 className="text-base md:text-lg lg:text-xl font-medium text-gray-700">
@@ -94,7 +94,7 @@ export default function Header() {
                             </h3>
                         </div>
                     </div>
-                    <div className="w-fit h-full flex items-center p-2 gap-x-4 justify-center">
+                    <div className="w-fit h-full flex items-end p-2 gap-x-4 justify-end">
                         <span className="flex gap-1">
                             <motion.button
                                 onClick={() => setFirst(1)}
@@ -154,6 +154,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
