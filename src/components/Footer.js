@@ -20,8 +20,8 @@ export default function Footer() {
                                 untuk membaca, mempelajari, dan mempelajari
                                 Al-Quran yang Mulia. Al-Quran Mulia memiliki
                                 banyak nama diantaranya Al-Quran Al-Kareem,
-                                Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr, dan
-                                Al-Noor.
+                                Al-Ketab, Al-Furqan, Al-Maw&lsquo;itha,
+                                Al-Thikr, dan Al-Noor.
                             </p>
                         </span>
                     </div>
